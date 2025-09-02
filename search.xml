@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>一些个人认为有用的资源</title>
+      <link href="/2025/01/14/%E4%B8%80%E4%BA%9B%E4%B8%AA%E4%BA%BA%E8%AE%A4%E4%B8%BA%E6%9C%89%E7%94%A8%E7%9A%84%E8%B5%84%E6%BA%90/"/>
+      <url>/2025/01/14/%E4%B8%80%E4%BA%9B%E4%B8%AA%E4%BA%BA%E8%AE%A4%E4%B8%BA%E6%9C%89%E7%94%A8%E7%9A%84%E8%B5%84%E6%BA%90/</url>
+      
+        <content type="html"><![CDATA[<p>我深知，每一位 CS 专业同学心里可能都藏着一个开源梦。可惜我个人能力尚浅，还难以真正参与生产，更多是在使用与分享中感受开源精神的力量。正因为我自己在专业成长中受惠于无数前辈的无私奉献，所以对他们始终怀有深深的敬意与感谢。</p><p>作为一名刚刚大二的学生，我暂时能做的，就是把平时收集到的一些觉得有价值的信息整理成文，希望可以帮到有需要的同学。所有资源都是公开可见的，但也请注意，信息的实效性会随着时间变化而不同。若其中有你已经了解的内容，或某些信息已有更新，还望海涵。我的初衷非常纯粹——只是想把我觉得有用的东西分享给大家。</p><h2 id="🔧-实用工具与资源推荐"><a href="#🔧-实用工具与资源推荐" class="headerlink" title="🔧 实用工具与资源推荐"></a>🔧 实用工具与资源推荐</h2><p><strong>GitHub</strong>：几乎是计算机专业学生必不可少的一个平台。无论代码、项目、教程还是开源工具，应有尽有。配合 AI 使用，学习效率更高。</p><p><strong>Google AI Studio</strong>：提供免费且额度充足的 Google 大模型访问权限，支持长达 45 分钟的视频上传，适合整理学习材料或做笔记。</p><p><strong>Edge 浏览器 Copilot</strong>：可通过科学上网使用 GPT 模型（具体版本未知），体验流畅的代码辅助和问答功能。</p><p><strong>北大前辈「小林」的八股文教程</strong>：内容非常扎实，尤其适合准备面试、巩固基础的同学。如不清楚什么是”八股文”，可检索或直接查看他的文章目录：<a href="https://xiaolincoding.com/">小林 coding</a></p><h2 id="🤖-善用-AI-辅助学习"><a href="#🤖-善用-AI-辅助学习" class="headerlink" title="🤖 善用 AI 辅助学习"></a>🤖 善用 AI 辅助学习</h2><p>现在多数 AI 平台都提供”深度搜索”或类似功能，非常适合用于资料检索。举个例子：很多数据结构教材中只有伪代码而没有实际源码，这时你就可以使用这类功能，直接输入：”请帮我从 GitHub 上搜索数据结构相关的源码项目”，效果非常不错。</p><p>此外，像 Grok、Gemini、ChatGPT 等主流 AI 工具目前每天都有充足的免费使用次数，基本能够满足日常学习和查询需求。</p><p>如果你喜欢命令行操作：</p><ul><li><strong>qwenCLI</strong>：每日可用 2000 次，配置简单；</li><li><strong>GeminiCLI</strong>：同样免费且易配置，qwenCLI 可视为其替代品。</li></ul><h2 id="📝-学习方式建议"><a href="#📝-学习方式建议" class="headerlink" title="📝 学习方式建议"></a>📝 学习方式建议</h2><p><strong>笔记软件</strong>：推荐 Notion、Obsidian 或 Typora（收费，但可寻找破解版）。请记住：工具只是辅助，清晰易懂、便于回顾才是记笔记的核心。不必过度追求样式，实用最重要。</p><p><strong>Linux 环境</strong>：如果你以后打算做 C++ 后端开发，Linux 环境几乎是必须接触的。可通过 VMware 安装虚拟机，如果觉得虚拟机中写代码卡顿，也可配置 IDE 远程连接 Linux 环境进行开发，网上都有详细教程。</p><p>内容不多，但都是我个人觉得真正有帮助的信息。如果能帮到你，那就太好了。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 资源分享 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 学习资源 </tag>
+            
+            <tag> 开源 </tag>
+            
+            <tag> AI工具 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Arch Linux 虚拟机安装指南</title>
       <link href="/2025/01/13/Arch%20Linux%20%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/"/>
       <url>/2025/01/13/Arch%20Linux%20%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/</url>
