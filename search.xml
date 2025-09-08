@@ -4,6 +4,37 @@
   
     
     <entry>
+      <title>VMWare Workstation Player 免费版下载安装指南</title>
+      <link href="/2025/09/08/vmware/"/>
+      <url>/2025/09/08/vmware/</url>
+      
+        <content type="html"><![CDATA[<p>VMware Workstation Player 是一款功能强大的桌面虚拟化软件，它允许用户在单一计算机上同时运行多个操作系统。对于开发者、测试人员或想要体验不同操作系统的普通用户来说，这是一款非常实用的工具。本文将详细介绍如何从 VMWare 官网免费下载和安装 VMWare Workstation Player。</p><h3 id="第一步：访问-VMWare-官网"><a href="#第一步：访问-VMWare-官网" class="headerlink" title="第一步：访问 VMWare 官网"></a>第一步：访问 VMWare 官网</h3><p>首先，进入 VMWare 的官方网站：<a href="https://www.vmware.com/">https://www.vmware.com/</a></p><p><img src="/../img/vm1.png" alt="访问 VMWare 官网"></p><h3 id="第二步：搜索-VMWare-Workstation-Player"><a href="#第二步：搜索-VMWare-Workstation-Player" class="headerlink" title="第二步：搜索 VMWare Workstation Player"></a>第二步：搜索 VMWare Workstation Player</h3><p>在官网页面中，找到并点击搜索功能，输入 “Desktop Hypervisor” 或者 “VMware Workstation Player” 进行搜索。通常，你可以在“产品”菜单下找到相关链接。</p><p><img src="/../img/vm2.png" alt="搜索 Desktop Hypervisor"></p><p>在搜索结果中，选择适用于个人使用的免费版本，即 VMWare Workstation Player。</p><p><img src="/../img/vm3.png" alt="选择 VMWare Workstation Player"></p><p><img src="/../img/vm4.png" alt="点击下载"></p><h3 id="第三步：注册-VMWare-账户"><a href="#第三步：注册-VMWare-账户" class="headerlink" title="第三步：注册 VMWare 账户"></a>第三步：注册 VMWare 账户</h3><p>在下载之前，VMWare 会要求你登录或创建一个账户。如果你没有账户，请点击注册。</p><p><img src="/../img/vm5.png" alt="进入注册页面"></p><p>请按照表单要求填写你的个人信息以完成注册。</p><p><img src="/../img/vm6.png" alt="填写注册信息"></p><h3 id="第四步：登录并完成信息登记"><a href="#第四步：登录并完成信息登记" class="headerlink" title="第四步：登录并完成信息登记"></a>第四步：登录并完成信息登记</h3><p>注册完成后，使用你的注册邮箱和设置的密码进行登录。(也许是你邮箱的密码也许是你注册时的密码，这点我不清楚因为我邮箱密码和注册密码好像是一样的)</p><p><img src="/../img/vm7.png" alt="输入邮箱和密码登录"></p><p>登录后，系统可能会要求你完成一些额外的信息登记。</p><p><img src="/../img/vm8.png" alt="完成信息登记"></p><p><img src="/../img/truevm9.png" alt="确认信息"></p><p><img src="/../img/truevm10%20(2).png" alt="确认信息步骤"></p><p>在同意许可协议时，请确保先勾选相关选项。</p><p><img src="/../img/vm9.png" alt="同意许可协议"></p><p><img src="/../img/vm10.png" alt="同意协议后继续"></p><p><img src="/../img/vm11.png" alt="继续下一步"></p><p>根据提示填写一些额外信息lastname和firstname我填的是注册时的，其他信息是乱填的，然后点击“Submit”提交。</p><p><img src="/../img/vm12.png" alt="填写额外信息"></p><h3 id="第五步：下载安装程序"><a href="#第五步：下载安装程序" class="headerlink" title="第五步：下载安装程序"></a>第五步：下载安装程序</h3><p>完成以上所有步骤后，你将看到最终的下载页面。点击下载按钮，即可开始下载 VMWare Workstation Player 的安装程序。</p><p><img src="/../img/vm11.png" alt="点击下载按钮"></p><p>下载完成后，双击安装文件，按照提示一步步完成安装即可。希望这篇指南对你有所帮助！</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 软件指南 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 虚拟机 </tag>
+            
+            <tag> VMWare </tag>
+            
+            <tag> 软件安装 </tag>
+            
+            <tag> 技术教程 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>一些个人认为有用的资源</title>
       <link href="/2025/01/14/%E4%B8%80%E4%BA%9B%E4%B8%AA%E4%BA%BA%E8%AE%A4%E4%B8%BA%E6%9C%89%E7%94%A8%E7%9A%84%E8%B5%84%E6%BA%90/"/>
       <url>/2025/01/14/%E4%B8%80%E4%BA%9B%E4%B8%AA%E4%BA%BA%E8%AE%A4%E4%B8%BA%E6%9C%89%E7%94%A8%E7%9A%84%E8%B5%84%E6%BA%90/</url>
