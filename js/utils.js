@@ -845,17 +845,31 @@ const anzhiyu = {
       return;
     }
     const urlParams = new URLSearchParams(window.location.search);
-    const userId = "8152976493";
-    const userServer = "netease";
     const anMusicPageMeting = document.getElementById("anMusic-page-meting");
     if (urlParams.get("id") && urlParams.get("server")) {
       const id = urlParams.get("id");
       const server = urlParams.get("server");
       anMusicPageMeting.innerHTML = `<meting-js id="${id}" server=${server} type="playlist" type="playlist" mutex="true" preload="auto" theme="var(--anzhiyu-main)" order="list" list-max-height="calc(100vh - 169px)!important"></meting-js>`;
+      anzhiyu.changeMusicBg(false);
+    } else if (GLOBAL_CONFIG.music_page_default === "custom") {
+      fetch("/json/music.json")
+        .then(response => response.json())
+        .then(songs => {
+          const randomIndex = Math.floor(Math.random() * songs.length);
+          const randomSong = songs[randomIndex];
+          selectRandomSong.push(randomSong.name);
+          anMusicPageMeting.innerHTML = `<meting-js type="playlist" mutex="true" preload="auto" theme="var(--anzhiyu-main)" order="list" list-max-height="calc(100vh - 169px)!important"><pre hidden>${JSON.stringify([randomSong])}</pre></meting-js>`;
+          anzhiyu.changeMusicBg(false);
+        })
+        .catch(err => {
+          console.error("加载本地音乐失败", err);
+        });
     } else {
+      const userId = "8152976493";
+      const userServer = "netease";
       anMusicPageMeting.innerHTML = `<meting-js id="${userId}" server="${userServer}" type="playlist" mutex="true" preload="auto" theme="var(--anzhiyu-main)" order="list" list-max-height="calc(100vh - 169px)!important"></meting-js>`;
+      anzhiyu.changeMusicBg(false);
     }
-    anzhiyu.changeMusicBg(false);
   },
   //隐藏今日推荐
   hideTodayCard: function () {
@@ -923,7 +937,9 @@ const anzhiyu = {
 
     // 默认加载的歌单
     if (GLOBAL_CONFIG.music_page_default === "custom") {
-      anzhiyu.changeMusicList();
+      if (metingAplayer.list.audios.length === 0) {
+        anzhiyu.changeMusicList();
+      }
     }
 
     // 监听键盘事件
