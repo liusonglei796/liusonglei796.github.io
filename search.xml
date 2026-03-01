@@ -4,11 +4,11 @@
   
     
     <entry>
-      <title>预测大模型会不会取代程序员：五点核心原因</title>
-      <link href="/2026/03/01/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E4%BC%9A%E4%B8%8D%E4%BC%9A%E5%8F%96%E4%BB%A3%E7%A8%8B%E5%BA%8F%E5%91%98/"/>
-      <url>/2026/03/01/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E4%BC%9A%E4%B8%8D%E4%BC%9A%E5%8F%96%E4%BB%A3%E7%A8%8B%E5%BA%8F%E5%91%98/</url>
+      <title>DeepSeek：关于编程、AI与工程能力的Q&amp;A全纪录</title>
+      <link href="/2026/03/01/DeepSeek%E5%85%B3%E4%BA%8E%E7%BC%96%E7%A8%8B%E4%B8%8EAI%E7%9A%84QA/"/>
+      <url>/2026/03/01/DeepSeek%E5%85%B3%E4%BA%8E%E7%BC%96%E7%A8%8B%E4%B8%8EAI%E7%9A%84QA/</url>
       
-        <content type="html"><![CDATA[<p>这是一个很多开发者都关心的问题。我的看法是：<strong>大模型不会完全取代程序员，但它会深刻重塑这个职业</strong>。就像工业革命没有淘汰工匠，而是淘汰了不懂使用机器的工匠一样。</p><p>以下是五点核心原因：</p><h3 id="1-大模型缺乏真正的“问题解决”与“需求转化”能力"><a href="#1-大模型缺乏真正的“问题解决”与“需求转化”能力" class="headerlink" title="1. 大模型缺乏真正的“问题解决”与“需求转化”能力"></a>1. 大模型缺乏真正的“问题解决”与“需求转化”能力</h3><p>编程的本质不是敲代码，而是<strong>将模糊的、甚至矛盾的人类需求，转化为精确、无歧义的逻辑指令</strong>。</p><ul><li><strong>现状</strong>：大模型擅长在已知模式中生成代码，但它并不理解业务背后的“为什么”。产品经理说“给用户推荐感兴趣的内容”，人类程序员知道要权衡冷启动、多样性、时效性，甚至商业变现逻辑；而大模型只会机械地生成一个协同过滤算法。</li><li><strong>结论</strong>：它能把“怎么做”做得很好，但很难独立搞懂“做什么”以及“为什么这么做”。</li></ul><h3 id="2-复杂系统的架构能力无法被替代"><a href="#2-复杂系统的架构能力无法被替代" class="headerlink" title="2. 复杂系统的架构能力无法被替代"></a>2. 复杂系统的架构能力无法被替代</h3><p>大模型在生成几百行代码时表现不错，但真实世界的软件往往是数百万行代码的复杂系统，涉及高并发、数据一致性、容灾备份等宏观设计。</p><ul><li><strong>现状</strong>：大模型缺乏全局视角，无法像资深架构师那样，在技术选型时综合考虑团队技术栈、成本、维护性、未来扩展性。它可能会在一个庞大的单体应用中，给出一个引入全新分布式事务的“正确”建议，从而引发更多问题。</li><li><strong>结论</strong>：系统设计是一种权衡的艺术，这种基于长期经验积累的宏观把控，是目前大模型无法具备的。</li></ul><h3 id="3-代码只是表象，业务粘性是护城河"><a href="#3-代码只是表象，业务粘性是护城河" class="headerlink" title="3. 代码只是表象，业务粘性是护城河"></a>3. 代码只是表象，业务粘性是护城河</h3><p>很多程序员的价值不仅在于写代码，更在于他们深谙特定的业务领域知识。比如，金融支付系统的程序员懂结算周期和风控，医疗系统的程序员懂HIPAA合规。</p><ul><li><strong>现状</strong>：一个通用大模型虽然读过很多文档，但它不掌握你公司的内部私有逻辑、复杂的遗留系统数据格式，以及那些“只可意会、不可言传”的团队默契。这些是公司的核心资产，也是程序员不可替代的部分。</li><li><strong>结论</strong>：程序员是技术与业务的桥梁。只要业务逻辑的复杂度存在，这座桥就需要人来搭建和维护。</li></ul><h3 id="4-技术债务的“接盘侠”只能是人"><a href="#4-技术债务的“接盘侠”只能是人" class="headerlink" title="4. 技术债务的“接盘侠”只能是人"></a>4. 技术债务的“接盘侠”只能是人</h3><p>现实中的代码库充满了“屎山”——那些年久失修、文档缺失、但又在线上跑得好好的遗留代码。</p><ul><li><strong>现状</strong>：维护这些代码，80%的精力花在理解“前人为什么要这么写”以及“改了这里会不会影响那个20年前的老功能”上。大模型没有这种“考古”和推理能力，它只会根据统计学规律给出“标准答案”，而不是那个能在现有畸形架构里恰好能运行的“正确答案”。</li><li><strong>结论</strong>：Debug（调试）和维护旧代码，需要的是对系统上下文的理解和直觉，这恰恰是大模型的盲区。</li></ul><h3 id="5-责任归属的终极难题"><a href="#5-责任归属的终极难题" class="headerlink" title="5. 责任归属的终极难题"></a>5. 责任归属的终极难题</h3><p>软件是要承担责任的。如果电商系统算错了钱，如果自动驾驶撞了人，如果医疗系统开错了药——<strong>谁来负责？</strong></p><ul><li><strong>现状</strong>：目前的法律和伦理框架下，责任必须由自然人或者法人（公司）来承担。你不能把大模型叫到法庭上让它负责。因此，必须有一个具备专业能力的“人”在关键节点进行审核、决策和担责。</li><li><strong>结论</strong>：只要软件依然关乎利益与生命安全，人类就必须留在决策闭环中。程序员是这个闭环的守护者。</li></ul><hr><p><strong>总结一下未来趋势：</strong><br>大模型更像是程序员的 <strong>“Copilot”</strong>，而不是“Replacer”。它会让编程的门槛变低，让简单需求能直接生成代码，从而大幅提升开发效率。但随之而来的，是行业对程序员的要求会更高——那些只会写简单增删改查（CRUD）代码的程序员可能会被淘汰，但<strong>懂业务、懂架构、能解决复杂问题的程序员，反而会因为有了AI助手而变得更强大</strong>。</p>]]></content>
+        <content type="html"><![CDATA[<p>以下是我在使用 DeepSeek 学习 Go 语言和编程时，关于 API、工程能力、大模型会不会取代程序员等问题的完整 Q&amp;A 记录。希望能给同样在学习编程的你带来启发。</p><span id="more"></span><h2 id="1-API的全称和中文是什么？"><a href="#1-API的全称和中文是什么？" class="headerlink" title="1. API的全称和中文是什么？"></a>1. API的全称和中文是什么？</h2><p><strong>DeepSeek:</strong><br>API 的全称是 <strong>Application Programming Interface</strong>，中文通常翻译为 <strong>“应用程序编程接口”</strong> 或简称为 <strong>“应用程序接口”</strong>。它是一组定义好的规则和协议，允许不同的软件应用程序之间相互通信、交换数据和功能。</p><hr><h2 id="2-不是所有的接口都叫API吗？"><a href="#2-不是所有的接口都叫API吗？" class="headerlink" title="2. 不是所有的接口都叫API吗？"></a>2. 不是所有的接口都叫API吗？</h2><p><strong>DeepSeek:</strong><br>简短的回答是：<strong>并不是所有接口都叫 API</strong>。<br>虽然在日常口语中，我们有时会把“接口”等同于 API，但在计算机科学和软件工程中，“接口”是一个更通用的概念，而 API 是其中一种特定类型。</p><p>为了帮你更清晰地理解，可以把“接口”想象成“沟通的边界”。下面这几种都是“接口”，但它们不一定是 API：</p><ol><li><strong>用户界面 (UI) - 人与软件的接口</strong>…</li><li><strong>命令行界面 (CLI) - 人与终端交互的接口</strong>…</li><li><strong>硬件接口 (Hardware Interface) - 硬件与硬件的连接</strong>…</li><li><strong>编程语言内部的接口 (Programming Interface)</strong>…</li></ol><p><strong>总结：API 的独特之处在哪里？</strong><br>API 是“应用程序编程接口”，它的核心特征在于：</p><ul><li><strong>使用者是程序</strong>：设计目的是方便其他软件开发者调用。</li><li><strong>明确的契约</strong>：定义了请求的格式（参数）和返回的格式（数据结构）。</li></ul><hr><h2 id="3-API和SDK的区别是什么？"><a href="#3-API和SDK的区别是什么？" class="headerlink" title="3. API和SDK的区别是什么？"></a>3. API和SDK的区别是什么？</h2><p><strong>DeepSeek:</strong><br>API 和 SDK 是软件开发中经常一起出现的两个概念，它们关系密切但职责不同。</p><ul><li><strong>API（应用程序编程接口）</strong>：是沟通的桥梁，定义了程序之间如何对话。类似于餐厅里的<strong>服务员</strong>，你通过菜单（API文档）点菜，服务员把需求传达给厨房并返回菜品。</li><li><strong>SDK（软件开发工具包）</strong>：是开发工具箱，提供了开发某类应用所需的各种工具（包含 API 的封装库、文档、示例代码、调试工具等）。类似于一套<strong>完整的餐厅解决方案</strong>，包括装修图纸、设备、手册等。</li></ul><p><strong>核心区别：</strong></p><ul><li><strong>API</strong> 是一个接口规范，通常是直接发送 HTTP 请求。</li><li><strong>SDK</strong> 是一个工具包，通常需要下载到本地并引入库文件。</li><li><strong>关系</strong>：SDK 通常包含 API 的封装，让你更方便地调用服务。</li></ul><hr><h2 id="4-预测大模型会不会取代程序员，给出五点原因"><a href="#4-预测大模型会不会取代程序员，给出五点原因" class="headerlink" title="4. 预测大模型会不会取代程序员，给出五点原因"></a>4. 预测大模型会不会取代程序员，给出五点原因</h2><p><strong>DeepSeek:</strong><br>大模型不会完全取代程序员，但会深刻重塑这个职业。以下是五点核心原因：</p><ol><li><strong>缺乏真正的“问题解决”与“需求转化”能力</strong>：编程的本质是将模糊的代码需求转化为精确逻辑。AI 擅长生成代码，但不理解业务背后的“为什么”。</li><li><strong>复杂系统的架构能力无法被替代</strong>：大模型缺乏全局视角，无法在数百万行代码的复杂系统中进行微观设计与宏观权衡。</li><li><strong>业务粘性是护城河</strong>：程序员的价值在于深谙特定业务领域知识（如金融、医疗合规），而 AI 不掌握公司的内部私有逻辑。</li><li><strong>技术债务的维护挑战</strong>：面对“屎山”代码，维护需要对上下文的深刻理解和直觉，这目前是大模型的盲区。</li><li><strong>责任归属的终极难题</strong>：软件需要担责。法律和伦理框架下，责任必须由自然人或法人承担，AI 无法在法律上负责。</li></ol><hr><h2 id="5-Copilot中文是什么意思？"><a href="#5-Copilot中文是什么意思？" class="headerlink" title="5. Copilot中文是什么意思？"></a>5. Copilot中文是什么意思？</h2><p><strong>DeepSeek:</strong><br>Copilot 的中文直译是 <strong>“副驾驶”</strong>。在编程领域，它特指 GitHub 推出的 GitHub Copilot，常被称为 <strong>“AI 编程助手”</strong>，寓意它像副驾驶一样协助程序员，而非替代。</p><hr><h2 id="6-我是一个编程新手在学习Go语言，但是我觉得大模型实在是太厉害了它能发现的问题我发现不了…我该怎么办？"><a href="#6-我是一个编程新手在学习Go语言，但是我觉得大模型实在是太厉害了它能发现的问题我发现不了…我该怎么办？" class="headerlink" title="6. 我是一个编程新手在学习Go语言，但是我觉得大模型实在是太厉害了它能发现的问题我发现不了…我该怎么办？"></a>6. 我是一个编程新手在学习Go语言，但是我觉得大模型实在是太厉害了它能发现的问题我发现不了…我该怎么办？</h2><p><strong>DeepSeek:</strong><br>这种焦虑在新手阶段非常正常。面对强大的 AI，你应该把它当作**“教练”<strong>而非</strong>“代练”**：</p><ol><li><strong>从“写代码”转向“读和改”</strong>：让 AI 生成基础代码，你的任务是运行并理解每一行为什么这么写。</li><li><strong>用 AI 构建问题发现能力</strong>：把你的代码发给 AI 评审，学习它指出的错误模式。</li><li><strong>用 AI 攻克概念理解</strong>：让 AI 用生活化的比喻（如插座和插头）解释抽象概念。</li><li><strong>心态调整</strong>：你的价值不再是手写代码的速度，而是提出需求、判断结果和整合知识的能力。</li></ol><hr><h2 id="7-我的语法没问题但是我的工程能力有问题…写不出来那样牛逼的代码怎么办？"><a href="#7-我的语法没问题但是我的工程能力有问题…写不出来那样牛逼的代码怎么办？" class="headerlink" title="7. 我的语法没问题但是我的工程能力有问题…写不出来那样牛逼的代码怎么办？"></a>7. 我的语法没问题但是我的工程能力有问题…写不出来那样牛逼的代码怎么办？</h2><p><strong>DeepSeek:</strong><br>语法是单词，工程是文章。提升工程能力的四个刻意练习：</p><ol><li><strong>拆解式追问</strong>：看到 AI 的精妙设计时，追问其权衡过程（例如：为什么用 channel 而不是 mutex？）。</li><li><strong>对比式学习</strong>：拿你写的“土味”代码让 AI 优化到生产级别，观察其进化轨迹。</li><li><strong>逆向工程</strong>：让 AI 解读 Go 标准库的设计意图。</li><li><strong>模拟训练</strong>：假装设计一个缓存系统，先画架构图，再对比 AI 的专业方案。</li></ol><hr><h2 id="8-那我的工程代码能力要怎么锻炼啊，想一个需求只有一句话我根本写不出完整代码"><a href="#8-那我的工程代码能力要怎么锻炼啊，想一个需求只有一句话我根本写不出完整代码" class="headerlink" title="8. 那我的工程代码能力要怎么锻炼啊，想一个需求只有一句话我根本写不出完整代码"></a>8. 那我的工程代码能力要怎么锻炼啊，想一个需求只有一句话我根本写不出完整代码</h2><p><strong>DeepSeek:</strong><br>开发的第一步是细化需求。采用以下路径：</p><ol><li><strong>拆碎需求</strong>：让 AI 帮你列出“管理待办事项”需要考虑的 10 个细节（存储、操作、持久化等）。</li><li><strong>挑出最小可用版 (MVP)</strong>：只做最简单的“添加”和“列出”。</li><li><strong>拆成步骤清单</strong>：让 AI 细化开发路线图（创建项目、定义结构体、文件读写等）。</li><li><strong>逐个攻克</strong>：针对每个步骤向 AI 请教具体写法。</li></ol><hr><h2 id="9-MVP是啥？"><a href="#9-MVP是啥？" class="headerlink" title="9. MVP是啥？"></a>9. MVP是啥？</h2><p><strong>DeepSeek:</strong><br><strong>MVP (Minimum Viable Product)</strong> 即 <strong>“最小可行产品”</strong>。指拥有足以满足早期用户需求的核心功能的最简化版本。核心思想是：先跑起来，验证想法，再逐步根据反馈进行迭代。</p><hr><h2 id="10-那我要怎么锻炼我的debug能力啊，AI能解决我项目中的所有bug…我该怎么办？"><a href="#10-那我要怎么锻炼我的debug能力啊，AI能解决我项目中的所有bug…我该怎么办？" class="headerlink" title="10. 那我要怎么锻炼我的debug能力啊，AI能解决我项目中的所有bug…我该怎么办？"></a>10. 那我要怎么锻炼我的debug能力啊，AI能解决我项目中的所有bug…我该怎么办？</h2><p><strong>DeepSeek:</strong><br>Debug 能力是积累的“错误模式库”。特训法如下：</p><ol><li><strong>复现与隔离</strong>：学会在问 AI 之前，先收集输入、输出、错误全文，缩小可疑范围。</li><li><strong>二分法定位</strong>：在代码中插入打印语句，确认数据在何处开始异常。</li><li><strong>主动制造 bug</strong>：故意改错正确代码，看报错信息，建立“现象-原因”的神经连接。</li><li><strong>使用专业工具</strong>：学习使用 Go 的 <code>pprof</code> (性能分析) 和 <code>dlv</code> (断点调试)。</li></ol><hr><h2 id="11-我想让AI帮我制造bug请问我的提示词要怎么写？"><a href="#11-我想让AI帮我制造bug请问我的提示词要怎么写？" class="headerlink" title="11. 我想让AI帮我制造bug请问我的提示词要怎么写？"></a>11. 我想让AI帮我制造bug请问我的提示词要怎么写？</h2><p><strong>DeepSeek:</strong><br><strong>基础版提示词：</strong></p><blockquote><p>“请帮我修改下面这段 Go 代码，在代码中制造一个【并发竞争】的 bug。不要告诉我修改了哪里，只返回修改后的代码，用于我练习 debug。”</p></blockquote><p><strong>进阶版：</strong></p><blockquote><p>“制造 2-3 个不同类型的 bug，并给我一份症线索清单（如程序会卡住、结果变少等），但不要直接点出位置。”</p></blockquote><hr><h2 id="12-给我制造bug的高级提示词"><a href="#12-给我制造bug的高级提示词" class="headerlink" title="12. 给我制造bug的高级提示词"></a>12. 给我制造bug的高级提示词</h2><p><strong>DeepSeek:</strong><br><strong>针对项目特点制造 bug 的高级提示词：</strong></p><blockquote><p>“你是一位‘bug 制造专家’。根据我的项目【项目背景、类型、功能】，请在代码中植入 3 个符合真实场景的典型 bug（如 channel 使用不当、资源未关闭、切片越界）。返回修改后的完整代码及一份描述 bug 现象（但不含位置）的清单，协助我进行 debug 实战练习。”</p></blockquote>]]></content>
       
       
       <categories>
@@ -25,6 +25,10 @@
             <tag> 程序员 </tag>
             
             <tag> AI </tag>
+            
+            <tag> Go语言 </tag>
+            
+            <tag> 学习经验 </tag>
             
         </tags>
       
@@ -62,11 +66,11 @@
       
         <tags>
             
+            <tag> 虚拟机 </tag>
+            
             <tag> 技术教程 </tag>
             
             <tag> VSCode </tag>
-            
-            <tag> 虚拟机 </tag>
             
             <tag> SSH </tag>
             
@@ -93,9 +97,9 @@
       
         <tags>
             
-            <tag> 技术教程 </tag>
-            
             <tag> 虚拟机 </tag>
+            
+            <tag> 技术教程 </tag>
             
             <tag> VMWare </tag>
             
@@ -124,9 +128,9 @@
       
         <tags>
             
-            <tag> 虚拟机 </tag>
-            
             <tag> Arch Linux </tag>
+            
+            <tag> 虚拟机 </tag>
             
             <tag> Linux安装 </tag>
             
