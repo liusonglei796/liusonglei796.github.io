@@ -1,0 +1,479 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>SOLID 原则笔记（以 DIP 为主线） | Blog</title><meta name="keywords" content="SOLID原则, 依赖反转, DIP, 开闭原则, 里氏替换, 接口隔离, 单一职责"><meta name="author" content="Lay"><meta name="copyright" content="Lay"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#f7f9fe"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="SOLID 原则笔记（以 DIP 为主线）"><meta name="application-name" content="SOLID 原则笔记（以 DIP 为主线）"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#f7f9fe"><meta property="og:type" content="article"><meta property="og:title" content="SOLID 原则笔记（以 DIP 为主线）"><meta property="og:url" content="https://liusonglei796.github.io/2026/06/19/SOLID%E5%8E%9F%E5%88%99%E7%AC%94%E8%AE%B0-%E4%BB%A5DIP%E4%B8%BA%E4%B8%BB%E7%BA%BF/index.html"><meta property="og:site_name" content="Blog"><meta property="og:description" content="以依赖反转原则（DIP）为主线，串联 SOLID 五大原则的核心思想与实战案例，涵盖报表导出器、LSP 契约设计、Go 接口隔离等示例。"><meta property="og:locale" content="en"><meta property="og:image" content="https://liusonglei796.github.io/img/solid-dip-cover.png"><meta property="article:author" content="Lay"><meta property="article:tag"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://liusonglei796.github.io/img/solid-dip-cover.png"><meta name="description" content="以依赖反转原则（DIP）为主线，串联 SOLID 五大原则的核心思想与实战案例，涵盖报表导出器、LSP 契约设计、Go 接口隔离等示例。"><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="https://liusonglei796.github.io/2026/06/19/SOLID%E5%8E%9F%E5%88%99%E7%AC%94%E8%AE%B0-%E4%BB%A5DIP%E4%B8%BA%E4%B8%BB%E7%BA%BF/"><link rel="preconnect" href="//cdn.cbd.int"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>  const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: {"enable":true,"img":"https://upload-bbs.miyoushe.com/upload/2024/07/27/125766904/ba62475f396df9de3316a08ed9e65d86_5680958632268053399..png"},
+  postHeadAiDescription: {"enable":true,"gptName":"AnZhiYu","mode":"local","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"xxxx","Referer":"https://xx.xx/"},
+  diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w 不要走！再看看嘛！","backTitle":"♪(^∇^*)欢迎肥来！"},
+  LA51: undefined,
+  greetingBox: undefined,
+  twikooEnvId: 'your-twikoo-env-id',
+  commentBarrageConfig:undefined,
+  music_page_default: "custom",
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: false,
+  mainTone: undefined,
+  authorStatus: undefined,
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: true,
+    post: false
+  },
+  runtime: 'days',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"Author: Lay","link":"Link: ","source":"Source: Blog","info":"Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.","copySuccess":"Copy success, copy and reprint please mark the address of this article"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"Traditional Chinese Activated Manually","cht_to_chs":"Simplified Chinese Activated Manually","day_to_night":"Dark Mode Activated Manually","night_to_day":"Light Mode Activated Manually","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  shortcutKey: undefined,
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: 'Blog',
+  title: 'SOLID 原则笔记（以 DIP 为主线）',
+  postAI: '',
+  pageFillDescription: '依赖反转（Dependency Inversion PrincipleDIP）, 核心思想, 相关原则, 单一职责原则（Single Responsibility PrincipleSRP）, 开闭原则（Openx2FClosed PrincipleOCP）, 举例说明, 高层模块（业务核心包）, 低层实现模块（放在其他包）, 如何体现 SRP, 如何体现 DIP, 里氏替换原则（Liskov Substitution PrincipleLSP）, 1. 核心定义, 2. LSP 的本质：遵守契约, 3. DIP 与 LSP 的关系, 4. 结合报表导出器的例子解释, 接口隔离原则（Interface Segregation PrincipleISP）, 臃肿接口的问题, ISP 解决方案：接口隔离依赖反转核心思想高层模块不应该依赖底层模块二者应该依赖抽象高层模块需要什么抽象就定义成什么底层模块必须无条件向高层模块低头抽象通常定义在消费者层高层相关原则单一职责原则一个软件模块应该有且仅有一个被修改的理由一个软件模块应该且对一个角色或利益相关者负责开闭原则设计良好的软件系统应能方便地扩展新功能这种扩展理想情况下应无需修改现有的旧代码为了实现设计者会利用和将代码按变更原因隔离使得新功能可以独立成新组件通过接口反转依赖让高层策略不依赖低层细节二者结合使得系统在添加新功能时只需新增一个实现接口的低层组件无需触碰封装了核心业务逻辑的高层旧代码从而实现了举例说明高层模块业务核心包包模块核心业务接口定义高层策略的一部分报表导出器方法导出报表数据业务服务同样位于高层依赖上面的接口报表服务私有属性导出器报表导出器构造方法导出器报表导出器导出器导出器方法生成并导出数据收集报表数据文件内容导出器导出数据保存或发送文件内容说明报表导出器和报表服务物理上放在同一个包模块里高层自己定义所需的抽象不依赖任何外部具体实现低层实现模块放在其他包包模块导出实现导出器实现报表导出器方法导出数据导出器实现报表导出器方法导出数据依赖方向低层的导出实现包依赖高层的核心业务包因为要实现报表导出器高层对低层完全无感知如何体现导出器的修改只因为格式变动导出器的修改只因为要求变动报表服务的修改只因为数据收集或流程控制变动三种变化原因被隔离在不同的类中互不干扰如何体现依赖方向箭头表示依赖报表服务依赖报表导出器抽象实现导出器实现导出器报表服务高层只依赖报表导出器接口从不引用任何具体导出类具体导出类导出器和导出器依赖于高层定义的抽象通过实现接口倒置了传统的依赖方向里氏替换原则核心定义子类型必须能够替换其基类型且不改变程序的逻辑正确性和预期行为的本质遵守契约调用方应当针对抽象编写逻辑而无需关心具体实现的差异强调的不仅仅是编译能通过那是结构问题更是契约设计是行为问题子类在重写方法时不能提出比基类更苛刻的条件也不能给出比基类更差的结果例如抛出未声明的异常或返回高层非预期的数据类型与的关系依赖倒置提供的是替换的骨架高层不依赖低层双方依赖抽象保证了结构上可以拔插里氏替换保证的是替换的灵魂确保子类插进去后高层逻辑绝对不会崩溃也不需要做特殊判断结论实现了只是满足了的结构前提如果在子类里乱写逻辑打破了预期依然会违背总而言之高层代码不能动也就是要实现的终极目标之一对修改关闭结合报表导出器的例子解释背景高层模块报表服务依赖了抽象接口报表导出器的导出数据方法预期行为是不管传入什么合法数据都会返回一份导出的文件内容正向例子满足我们新增了导出器和导出器它们完全遵守了接口的契约接收数据老老实实地返回或的文件流高层业务代码调用方完全不用修改这就是完美的里氏替换反向例子满足但违背后来业务要求增加一个导出器在结构上它实现了报表导出器接口满足了但在具体实现里加了私货导出器实现报表导出器方法导出数据如果数据行数违背预期基类契约没说会抛这种异常抛出数据量过大不支持导出异常正常导出逻辑违背带来的恶果当高层报表服务无意间用到这个导出器且数据量大于时程序直接崩溃了因为高层根本没准备好捕获这个异常为了让系统不崩溃高层模块被迫改成这样报表服务方法生成并导出收集数据灾难发生高层被迫针对具体子类写特殊逻辑抽象被破坏了如果导出器类型是导出器且数据行数提示用户不支持这么多数据返回文件内容导出器导出数据接口隔离原则任何调用方都不应该依赖它不使用的元素臃肿接口的问题在缺乏的典型设计中可能会定义一个包含太多方法的大接口臃肿接口包含太多方法如果不同的调用方只需要其中部分方法只需要不需要和需要全部三个在中即使只调用如果它依赖的某个类型实现了整个接口那么源代码依赖对或方法的任何签名修改都会影响所有引用接口的代码编译影响是静态编译语言任何接口方法的变化都会导致所有依赖该接口的包需要重新编译测试复杂化为测试而模拟接口时必须实现它不需要的和方法解决方案接口隔离将大接口拆分为多个小而专注的接口隔离后的专用接口实现所有接口只实现接口现在只依赖接口修改或接口不会影响或任何只使用的代码',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2026-06-19 18:28:14',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://npm.elemecdn.com/anzhiyu-blog-static@1.0.4/img/avatar.jpg"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><a id="site-name" href="/" accesskey="h"><div class="title">Blog</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/comments/"><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 友链</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size: 0.9em;"></i><span> 友人帐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/fcircle/"><i class="anzhiyufont anzhiyu-icon-artstation faa-tada" style="font-size: 0.9em;"></i><span> 朋友圈</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 我的</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/bangumis/"><i class="anzhiyufont anzhiyu-icon-bilibili faa-tada" style="font-size: 0.9em;"></i><span> 追番页</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/album/"><i class="anzhiyufont anzhiyu-icon-images faa-tada" style="font-size: 0.9em;"></i><span> 相册集</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/air-conditioner/"><i class="anzhiyufont anzhiyu-icon-fan faa-tada" style="font-size: 0.9em;"></i><span> 小空调</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/essay/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size: 0.9em;"></i><span> 闲言碎语</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li></ul></div></div></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" title="搜索🔍" accesskey="s"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span> Search</span></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="/img/gfdg.jpg" target="_blank"><img class="post-qr-code-img" alt="微信" src="/img/gfdg.jpg"/></a><div class="post-qr-code-desc">微信</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> Newest Comments</span></div><div class="aside-list"><span>loading...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/AI/" style="font-size: 1.05rem;">AI<sup>1</sup></a><a href="/tags/AI%E7%BC%96%E7%A8%8B/" style="font-size: 1.05rem;">AI编程<sup>1</sup></a><a href="/tags/Arch-Linux/" style="font-size: 1.05rem;">Arch Linux<sup>1</sup></a><a href="/tags/Cloudflare/" style="font-size: 1.05rem;">Cloudflare<sup>1</sup></a><a href="/tags/DIP/" style="font-size: 1.05rem;">DIP<sup>1</sup></a><a href="/tags/Go/" style="font-size: 1.05rem;">Go<sup>1</sup></a><a href="/tags/Go%E8%AF%AD%E8%A8%80/" style="font-size: 1.05rem;">Go语言<sup>2</sup></a><a href="/tags/Linux%E5%AE%89%E8%A3%85/" style="font-size: 1.05rem;">Linux安装<sup>1</sup></a><a href="/tags/OpenCode/" style="font-size: 1.05rem;">OpenCode<sup>1</sup></a><a href="/tags/SOLID/" style="font-size: 1.05rem;">SOLID<sup>1</sup></a><a href="/tags/SSH/" style="font-size: 1.05rem;">SSH<sup>1</sup></a><a href="/tags/Tunnel/" style="font-size: 1.05rem;">Tunnel<sup>1</sup></a><a href="/tags/VMWare/" style="font-size: 1.05rem;">VMWare<sup>1</sup></a><a href="/tags/VMware/" style="font-size: 1.05rem;">VMware<sup>1</sup></a><a href="/tags/VSCode/" style="font-size: 1.05rem;">VSCode<sup>1</sup></a><a href="/tags/cloudflared/" style="font-size: 1.05rem;">cloudflared<sup>1</sup></a><a href="/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" style="font-size: 1.05rem;">内网穿透<sup>1</sup></a><a href="/tags/%E5%90%8E%E5%8F%B0%E5%BC%80%E5%8F%91/" style="font-size: 1.05rem;">后台开发<sup>1</sup></a><a href="/tags/%E5%90%8E%E7%AB%AF/" style="font-size: 1.05rem;">后端<sup>1</sup></a><a href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/" style="font-size: 1.05rem;">大模型<sup>1</sup></a><a href="/tags/%E5%AD%A6%E4%B9%A0%E7%BB%8F%E9%AA%8C/" style="font-size: 1.05rem;">学习经验<sup>1</sup></a><a href="/tags/%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/" style="font-size: 1.05rem;">定时任务<sup>1</sup></a><a href="/tags/%E5%AE%9E%E4%B9%A0/" style="font-size: 1.05rem;">实习<sup>1</sup></a><a href="/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" style="font-size: 1.05rem;">开发工具<sup>1</sup></a><a href="/tags/%E6%8A%80%E6%9C%AF%E6%95%99%E7%A8%8B/" style="font-size: 1.05rem;">技术教程<sup>2</sup></a><a href="/tags/%E6%95%99%E7%A8%8B/" style="font-size: 1.05rem;">教程<sup>1</sup></a><a href="/tags/%E6%9E%B6%E6%9E%84/" style="font-size: 1.05rem;">架构<sup>1</sup></a><a href="/tags/%E7%A8%8B%E5%BA%8F%E5%91%98/" style="font-size: 1.05rem;">程序员<sup>1</sup></a><a href="/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/" style="font-size: 1.05rem;">虚拟机<sup>3</sup></a><a href="/tags/%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/" style="font-size: 1.05rem;">设计原则<sup>1</sup></a><a href="/tags/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/" style="font-size: 1.05rem;">软件安装<sup>1</sup></a><a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E8%AE%BE%E8%AE%A1/" style="font-size: 1.05rem;">面向对象设计<sup>1</sup></a><a href="/tags/%E9%9D%A2%E7%BB%8F/" style="font-size: 1.05rem;">面经<sup>1</sup></a><a href="/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 1.05rem;">面试<sup>1</sup></a></div></div><hr/></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>Archives</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/06/"><span class="card-archive-list-date">June 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/05/"><span class="card-archive-list-date">May 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/04/"><span class="card-archive-list-date">April 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/03/"><span class="card-archive-list-date">March 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/09/"><span class="card-archive-list-date">September 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">3</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/01/"><span class="card-archive-list-date">January 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%8A%80%E6%9C%AF%E6%80%9D%E8%80%83/" itemprop="url">技术思考</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/SOLID/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>SOLID</span></a><a class="article-meta__tags" href="/tags/%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>设计原则</span></a><a class="article-meta__tags" href="/tags/DIP/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>DIP</span></a><a class="article-meta__tags" href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E8%AE%BE%E8%AE%A1/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>面向对象设计</span></a><a class="article-meta__tags" href="/tags/%E6%9E%B6%E6%9E%84/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>架构</span></a></span></div></div><h1 class="post-title" itemprop="name headline">SOLID 原则笔记（以 DIP 为主线）</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2026-06-19T08:00:00.000Z" title="Created 2026-06-19 16:00:00">2026-06-19</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2026-06-19T10:28:14.228Z" title="Updated 2026-06-19 18:28:14">2026-06-19</time></span></div><div class="meta-secondline"></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src="/img/solid-dip-cover.png"></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="https://liusonglei796.github.io/2026/06/19/SOLID%E5%8E%9F%E5%88%99%E7%AC%94%E8%AE%B0-%E4%BB%A5DIP%E4%B8%BA%E4%B8%BB%E7%BA%BF/"><header><a class="post-meta-categories" href="/categories/%E6%8A%80%E6%9C%AF%E6%80%9D%E8%80%83/" itemprop="url">技术思考</a><a href="/tags/SOLID/" tabindex="-1" itemprop="url">SOLID</a><a href="/tags/%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/" tabindex="-1" itemprop="url">设计原则</a><a href="/tags/DIP/" tabindex="-1" itemprop="url">DIP</a><a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E8%AE%BE%E8%AE%A1/" tabindex="-1" itemprop="url">面向对象设计</a><a href="/tags/%E6%9E%B6%E6%9E%84/" tabindex="-1" itemprop="url">架构</a><h1 id="CrawlerTitle" itemprop="name headline">SOLID 原则笔记（以 DIP 为主线）</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">Lay</span><time itemprop="dateCreated datePublished" datetime="2026-06-19T08:00:00.000Z" title="Created 2026-06-19 16:00:00">2026-06-19</time><time itemprop="dateCreated datePublished" datetime="2026-06-19T10:28:14.228Z" title="Updated 2026-06-19 18:28:14">2026-06-19</time></header><h1 id="依赖反转（Dependency-Inversion-Principle，DIP）"><a href="#依赖反转（Dependency-Inversion-Principle，DIP）" class="headerlink" title="依赖反转（Dependency Inversion Principle，DIP）"></a>依赖反转（Dependency Inversion Principle，DIP）</h1><h2 id="核心思想"><a href="#核心思想" class="headerlink" title="核心思想"></a>核心思想</h2><p>高层模块不应该依赖底层模块，<strong>二者应该依赖抽象</strong>。</p>
+<blockquote>
+<p>高层模块需要什么，抽象就定义成什么，底层模块必须无条件向高层模块低头。抽象通常定义在消费者层（高层）。</p>
+</blockquote>
+<hr>
+<h2 id="相关原则"><a href="#相关原则" class="headerlink" title="相关原则"></a>相关原则</h2><h3 id="单一职责原则（Single-Responsibility-Principle，SRP）"><a href="#单一职责原则（Single-Responsibility-Principle，SRP）" class="headerlink" title="单一职责原则（Single Responsibility Principle，SRP）"></a>单一职责原则（Single Responsibility Principle，SRP）</h3><ul>
+<li>一个软件模块应该有且仅有一个被修改的理由。</li>
+<li>一个软件模块应该且对一个角色或利益相关者负责。</li>
+</ul>
+<h3 id="开闭原则（Open-Closed-Principle，OCP）"><a href="#开闭原则（Open-Closed-Principle，OCP）" class="headerlink" title="开闭原则（Open&#x2F;Closed Principle，OCP）"></a>开闭原则（Open&#x2F;Closed Principle，OCP）</h3><p>设计良好的软件系统应能方便地扩展新功能，这种扩展理想情况下应无需修改现有的旧代码。为了实现 OCP，设计者会利用 SRP 和 DIP：</p>
+<ul>
+<li><strong>SRP</strong> 将代码按变更原因隔离，使得新功能可以独立成新组件；</li>
+<li><strong>DIP</strong> 通过接口反转依赖，让高层策略不依赖低层细节。</li>
+</ul>
+<p>二者结合，使得系统在添加新功能时，只需新增一个实现接口的低层组件，无需触碰封装了核心业务逻辑的高层旧代码，从而实现了 OCP。</p>
+<hr>
+<h2 id="举例说明"><a href="#举例说明" class="headerlink" title="举例说明"></a>举例说明</h2><h3 id="高层模块（业务核心包）"><a href="#高层模块（业务核心包）" class="headerlink" title="高层模块（业务核心包）"></a>高层模块（业务核心包）</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ===== 包/模块: 核心业务 =====</span></span><br><span class="line"><span class="comment">// 接口定义 — 高层策略的一部分</span></span><br><span class="line">interface 报表导出器 &#123;</span><br><span class="line">    方法 导出(报表数据)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 业务服务 — 同样位于高层，依赖上面的接口</span></span><br><span class="line">class 报表服务 &#123;</span><br><span class="line">    私有属性 导出器: 报表导出器</span><br><span class="line">    构造方法(导出器: 报表导出器) &#123;</span><br><span class="line">        <span class="built_in">this</span>.导出器 = 导出器</span><br><span class="line">    &#125;</span><br><span class="line">    方法 生成并导出() &#123;</span><br><span class="line">        数据 = 收集报表数据()</span><br><span class="line">        文件内容 = <span class="built_in">this</span>.导出器.导出(数据)</span><br><span class="line">        保存或发送(文件内容)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>说明：</strong> <code>报表导出器</code> 和 <code>报表服务</code> 物理上放在同一个包（模块）里，高层自己定义所需的抽象，不依赖任何外部具体实现。</p>
+</blockquote>
+<h3 id="低层实现模块（放在其他包）"><a href="#低层实现模块（放在其他包）" class="headerlink" title="低层实现模块（放在其他包）"></a>低层实现模块（放在其他包）</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ===== 包/模块: 导出实现 =====</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">HTML</span>导出器 实现 报表导出器 &#123;</span><br><span class="line">    方法 导出(数据) &#123; ... &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">PDF</span>导出器 实现 报表导出器 &#123;</span><br><span class="line">    方法 导出(数据) &#123; ... &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>依赖方向：</strong> 低层的 <code>导出实现</code> 包依赖高层的 <code>核心业务</code> 包（因为要实现 <code>报表导出器</code>），高层对低层完全无感知。</p>
+</blockquote>
+<h3 id="如何体现-SRP"><a href="#如何体现-SRP" class="headerlink" title="如何体现 SRP"></a>如何体现 SRP</h3><ul>
+<li><code>HTML导出器</code> 的修改只因为 HTML 格式变动。</li>
+<li><code>PDF导出器</code> 的修改只因为 PDF 要求变动。</li>
+<li><code>报表服务</code> 的修改只因为数据收集或流程控制变动。</li>
+</ul>
+<p>三种变化原因被隔离在不同的类中，互不干扰。</p>
+<h3 id="如何体现-DIP"><a href="#如何体现-DIP" class="headerlink" title="如何体现 DIP"></a>如何体现 DIP</h3><p><strong>依赖方向（箭头表示”依赖”）：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">报表服务  ──依赖──▶  报表导出器（抽象）  ◀──实现──  HTML导出器</span><br><span class="line">                                           ◀──实现──  PDF导出器</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>报表服务</code>（高层）<strong>只依赖</strong> <code>报表导出器</code> 接口，从不引用任何具体导出类。</li>
+<li>具体导出类 <code>HTML导出器</code> 和 <code>PDF导出器</code> 依赖于高层定义的抽象，通过实现接口”倒置”了传统的依赖方向。</li>
+</ul>
+<hr>
+<h2 id="里氏替换原则（Liskov-Substitution-Principle，LSP）"><a href="#里氏替换原则（Liskov-Substitution-Principle，LSP）" class="headerlink" title="里氏替换原则（Liskov Substitution Principle，LSP）"></a>里氏替换原则（Liskov Substitution Principle，LSP）</h2><h3 id="1-核心定义"><a href="#1-核心定义" class="headerlink" title="1. 核心定义"></a>1. 核心定义</h3><p>子类型必须能够替换其基类型，且<strong>不改变程序的逻辑正确性和预期行为</strong>。</p>
+<h3 id="2-LSP-的本质：遵守契约"><a href="#2-LSP-的本质：遵守契约" class="headerlink" title="2. LSP 的本质：遵守契约"></a>2. LSP 的本质：遵守契约</h3><p>调用方应当针对抽象编写逻辑，而无需关心具体实现的差异。LSP 强调的不仅仅是”编译能通过”（那是结构问题），更是”<strong>契约设计</strong>“（是行为问题）：子类在重写方法时，不能提出比基类更苛刻的条件，也不能给出比基类更差的结果（例如抛出未声明的异常，或返回高层非预期的数据类型）。</p>
+<h3 id="3-DIP-与-LSP-的关系"><a href="#3-DIP-与-LSP-的关系" class="headerlink" title="3. DIP 与 LSP 的关系"></a>3. DIP 与 LSP 的关系</h3><ul>
+<li><strong>DIP（依赖倒置）</strong> 提供的是<strong>替换的”骨架”</strong>：高层不依赖低层，双方依赖抽象（保证了结构上可以拔插）。</li>
+<li><strong>LSP（里氏替换）</strong> 保证的是<strong>替换的”灵魂”</strong>：确保子类插进去后，高层逻辑绝对不会崩溃，也不需要做特殊判断。</li>
+</ul>
+<blockquote>
+<p><strong>结论：</strong> 实现了 DIP 只是满足了 LSP 的结构前提；如果在子类里乱写逻辑打破了预期，依然会违背 LSP。</p>
+</blockquote>
+<p>总而言之，高层代码不能动——也就是 OCP 要实现的终极目标之一：<strong>对修改关闭</strong>。</p>
+<h3 id="4-结合”报表导出器”的例子解释"><a href="#4-结合”报表导出器”的例子解释" class="headerlink" title="4. 结合”报表导出器”的例子解释"></a>4. 结合”报表导出器”的例子解释</h3><p><strong>【背景】</strong> 高层模块 <code>报表服务</code> 依赖了抽象接口 <code>报表导出器</code> 的 <code>.导出(数据)</code> 方法，预期行为是：”不管传入什么合法数据，都会返回一份导出的文件内容”。</p>
+<p><strong>【正向例子：满足 LSP】</strong> 我们新增了 <code>HTML导出器</code> 和 <code>PDF导出器</code>。它们完全遵守了接口的契约，接收数据，老老实实地返回 HTML 或 PDF 的文件流。高层业务代码（调用方）完全不用修改，这就是完美的里氏替换。</p>
+<p><strong>【反向例子：满足 DIP 但违背 LSP】</strong> 后来业务要求增加一个 <code>Excel导出器</code>。在结构上它实现了 <code>报表导出器</code> 接口（满足了 DIP），但在具体实现里加了”私货”：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Excel</span>导出器 实现 报表导出器 &#123;</span><br><span class="line">    方法 导出(数据) &#123; </span><br><span class="line">        如果 (数据.行数 &gt; <span class="number">10000</span>) &#123;</span><br><span class="line">            <span class="comment">// 违背预期：基类契约没说会抛这种异常！</span></span><br><span class="line">            抛出 <span class="string">&quot;数据量过大不支持 Excel 导出异常&quot;</span> </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// ... 正常导出逻辑</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>【违背 LSP 带来的恶果】</strong> 当高层 <code>报表服务</code> 无意间用到这个 <code>Excel导出器</code> 且数据量大于 10000 时，程序直接崩溃了，因为高层根本没准备好捕获这个异常。</p>
+<p>为了让系统不崩溃，高层模块被迫改成这样：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">class 报表服务 &#123;</span><br><span class="line">    方法 生成并导出() &#123;</span><br><span class="line">        <span class="comment">// ... 收集数据</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 灾难发生：高层被迫针对具体子类写特殊逻辑，抽象被破坏了！</span></span><br><span class="line">        如果 (<span class="built_in">this</span>.导出器 类型是 Excel导出器 且 数据.行数 &gt; <span class="number">10000</span>) &#123;</span><br><span class="line">            提示用户(<span class="string">&quot;Excel不支持这么多数据&quot;</span>)</span><br><span class="line">            返回</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        文件内容 = <span class="built_in">this</span>.导出器.导出(数据)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="接口隔离原则（Interface-Segregation-Principle，ISP）"><a href="#接口隔离原则（Interface-Segregation-Principle，ISP）" class="headerlink" title="接口隔离原则（Interface Segregation Principle，ISP）"></a>接口隔离原则（Interface Segregation Principle，ISP）</h2><p>任何调用方都不应该依赖它不使用的元素。</p>
+<h3 id="“臃肿”接口的问题"><a href="#“臃肿”接口的问题" class="headerlink" title="“臃肿”接口的问题"></a>“臃肿”接口的问题</h3><p>在缺乏 ISP 的典型设计中，可能会定义一个包含太多方法的大接口：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 臃肿接口：包含太多方法</span></span><br><span class="line"><span class="keyword">type</span> Worker <span class="keyword">interface</span> &#123;</span><br><span class="line">    Work()</span><br><span class="line">    Eat()</span><br><span class="line">    Sleep()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果不同的调用方只需要其中部分方法：</p>
+<ul>
+<li><code>Robot</code> 只需要 <code>Work()</code>，不需要 <code>Eat()</code> 和 <code>Sleep()</code></li>
+<li><code>Human</code> 需要全部三个</li>
+</ul>
+<p>在 Go 中，即使 Robot 只调用 <code>Work()</code>，如果它依赖的某个类型实现了整个 <code>Worker</code> 接口，那么：</p>
+<ul>
+<li><strong>源代码依赖：</strong> 对 <code>Eat()</code> 或 <code>Sleep()</code> 方法的任何签名修改，都会影响所有引用 <code>Worker</code> 接口的代码。</li>
+<li><strong>编译影响：</strong> Go 是静态编译语言，任何接口方法的变化都会导致所有依赖该接口的包需要重新编译。</li>
+<li><strong>测试复杂化：</strong> 为测试 Robot 而模拟（mock）<code>Worker</code> 接口时，必须实现它不需要的 <code>Eat()</code> 和 <code>Sleep()</code> 方法。</li>
+</ul>
+<h3 id="ISP-解决方案：接口隔离"><a href="#ISP-解决方案：接口隔离" class="headerlink" title="ISP 解决方案：接口隔离"></a>ISP 解决方案：接口隔离</h3><p>将大接口拆分为多个小而专注的接口：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 隔离后的专用接口</span></span><br><span class="line"><span class="keyword">type</span> Worker <span class="keyword">interface</span> &#123;</span><br><span class="line">    Work()</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">type</span> Eater <span class="keyword">interface</span> &#123;</span><br><span class="line">    Eat()</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">type</span> Sleeper <span class="keyword">interface</span> &#123;</span><br><span class="line">    Sleep()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Human 实现所有接口</span></span><br><span class="line"><span class="keyword">type</span> Human <span class="keyword">struct</span>&#123;&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(h Human)</span></span> Work() &#123; ... &#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(h Human)</span></span> Eat()  &#123; ... &#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(h Human)</span></span> Sleep()&#123; ... &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Robot 只实现 Worker 接口</span></span><br><span class="line"><span class="keyword">type</span> Robot <span class="keyword">struct</span>&#123;&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(r Robot)</span></span> Work() &#123; ... &#125;</span><br></pre></td></tr></table></figure>
+
+<p>现在：</p>
+<ul>
+<li><code>Robot</code> 只依赖 <code>Worker</code> 接口</li>
+<li>修改 <code>Eater</code> 或 <code>Sleeper</code> 接口不会影响 <code>Robot</code> 或任何只使用 <code>Worker</code> 的代码</li>
+</ul>
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src="https://bu.dusays.com/2023/04/27/64496e511b09c.jpg" title="头像" alt="头像"><img class="post-copyright__author_img_front" src="https://bu.dusays.com/2023/04/27/64496e511b09c.jpg" title="头像" alt="头像"></a><div class="post-copyright__author_name">Lay</div><div class="post-copyright__author_desc"></div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="https://liusonglei796.github.io/2026/06/19/SOLID%E5%8E%9F%E5%88%99%E7%AC%94%E8%AE%B0-%E4%BB%A5DIP%E4%B8%BA%E4%B8%BB%E7%BA%BF/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('https://liusonglei796.github.io/2026/06/19/SOLID%E5%8E%9F%E5%88%99%E7%AC%94%E8%AE%B0-%E4%BB%A5DIP%E4%B8%BA%E4%B8%BB%E7%BA%BF/')">SOLID 原则笔记（以 DIP 为主线）</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"><div class="post-reward" onclick="anzhiyu.addRewardMask()"><div class="reward-button button--animated" title="赞赏作者"><i class="anzhiyufont anzhiyu-icon-hand-heart-fill"></i>打赏作者</div><div class="reward-main"><div class="reward-all"><span class="reward-title">感谢你赐予我前进的力量</span><ul class="reward-group"><li class="reward-item"><a href="/img/gfdg.jpg" target="_blank"><img class="post-qr-code-img" src="/img/gfdg.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li></ul><a class="reward-main-btn" href="/about/#about-reward" target="_blank"><div class="reward-text">赞赏者名单</div><div class="reward-dec">因为你们的支持让我意识到写文章的价值🙏</div></a></div></div></div><div id="quit-box" onclick="anzhiyu.removeRewardMask()" style="display: none"></div></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="https://liusonglei796.github.io/2026/06/19/SOLID%E5%8E%9F%E5%88%99%E7%AC%94%E8%AE%B0-%E4%BB%A5DIP%E4%B8%BA%E4%B8%BB%E7%BA%BF/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=SOLID 原则笔记（以 DIP 为主线）&amp;url=https://liusonglei796.github.io/2026/06/19/SOLID%E5%8E%9F%E5%88%99%E7%AC%94%E8%AE%B0-%E4%BB%A5DIP%E4%B8%BA%E4%B8%BB%E7%BA%BF/&amp;pic=/img/solid-dip-cover.png" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/SOLID/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>SOLID<span class="tagsPageCount">1</span></a><a class="post-meta__box__tags" href="/tags/%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>设计原则<span class="tagsPageCount">1</span></a><a class="post-meta__box__tags" href="/tags/DIP/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>DIP<span class="tagsPageCount">1</span></a><a class="post-meta__box__tags" href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E8%AE%BE%E8%AE%A1/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>面向对象设计<span class="tagsPageCount">1</span></a><a class="post-meta__box__tags" href="/tags/%E6%9E%B6%E6%9E%84/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>架构<span class="tagsPageCount">1</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="/img/solid-dip-cover.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/2026/05/30/OpenCode%E6%95%99%E5%AD%A6%E6%96%87%E6%A1%A3/"><img class="prev-cover" src="/img/opencode-wallpaper-2.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">OpenCode 教学文档 — AI 编程助手的完整使用指南</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="anzhiyufont anzhiyu-icon-comments"></i><span> Comment</span></div><div class="comment-randomInfo"><a onclick="anzhiyu.addRandomCommentInfo()" href="javascript:void(0)">匿名评论</a><a href="/privacy" style="margin-left: 4px">隐私政策</a></div></div><div class="comment-wrap"><div><div id="giscus-wrap"></div></div></div></div><div class="comment-barrage"></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info-avatar"><img class="avatar-img" src="https://bu.dusays.com/2023/04/27/64496e511b09c.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__description"></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BE%9D%E8%B5%96%E5%8F%8D%E8%BD%AC%EF%BC%88Dependency-Inversion-Principle%EF%BC%8CDIP%EF%BC%89"><span class="toc-number">1.</span> <span class="toc-text">依赖反转（Dependency Inversion Principle，DIP）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3"><span class="toc-number">1.1.</span> <span class="toc-text">核心思想</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E5%8E%9F%E5%88%99"><span class="toc-number">1.2.</span> <span class="toc-text">相关原则</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E4%B8%80%E8%81%8C%E8%B4%A3%E5%8E%9F%E5%88%99%EF%BC%88Single-Responsibility-Principle%EF%BC%8CSRP%EF%BC%89"><span class="toc-number">1.2.1.</span> <span class="toc-text">单一职责原则（Single Responsibility Principle，SRP）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%80%E9%97%AD%E5%8E%9F%E5%88%99%EF%BC%88Open-Closed-Principle%EF%BC%8COCP%EF%BC%89"><span class="toc-number">1.2.2.</span> <span class="toc-text">开闭原则（Open&#x2F;Closed Principle，OCP）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BE%E4%BE%8B%E8%AF%B4%E6%98%8E"><span class="toc-number">1.3.</span> <span class="toc-text">举例说明</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%AB%98%E5%B1%82%E6%A8%A1%E5%9D%97%EF%BC%88%E4%B8%9A%E5%8A%A1%E6%A0%B8%E5%BF%83%E5%8C%85%EF%BC%89"><span class="toc-number">1.3.1.</span> <span class="toc-text">高层模块（业务核心包）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%8E%E5%B1%82%E5%AE%9E%E7%8E%B0%E6%A8%A1%E5%9D%97%EF%BC%88%E6%94%BE%E5%9C%A8%E5%85%B6%E4%BB%96%E5%8C%85%EF%BC%89"><span class="toc-number">1.3.2.</span> <span class="toc-text">低层实现模块（放在其他包）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E4%BD%93%E7%8E%B0-SRP"><span class="toc-number">1.3.3.</span> <span class="toc-text">如何体现 SRP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E4%BD%93%E7%8E%B0-DIP"><span class="toc-number">1.3.4.</span> <span class="toc-text">如何体现 DIP</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%87%8C%E6%B0%8F%E6%9B%BF%E6%8D%A2%E5%8E%9F%E5%88%99%EF%BC%88Liskov-Substitution-Principle%EF%BC%8CLSP%EF%BC%89"><span class="toc-number">1.4.</span> <span class="toc-text">里氏替换原则（Liskov Substitution Principle，LSP）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%A0%B8%E5%BF%83%E5%AE%9A%E4%B9%89"><span class="toc-number">1.4.1.</span> <span class="toc-text">1. 核心定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-LSP-%E7%9A%84%E6%9C%AC%E8%B4%A8%EF%BC%9A%E9%81%B5%E5%AE%88%E5%A5%91%E7%BA%A6"><span class="toc-number">1.4.2.</span> <span class="toc-text">2. LSP 的本质：遵守契约</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-DIP-%E4%B8%8E-LSP-%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-number">1.4.3.</span> <span class="toc-text">3. DIP 与 LSP 的关系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E7%BB%93%E5%90%88%E2%80%9D%E6%8A%A5%E8%A1%A8%E5%AF%BC%E5%87%BA%E5%99%A8%E2%80%9D%E7%9A%84%E4%BE%8B%E5%AD%90%E8%A7%A3%E9%87%8A"><span class="toc-number">1.4.4.</span> <span class="toc-text">4. 结合”报表导出器”的例子解释</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3%E9%9A%94%E7%A6%BB%E5%8E%9F%E5%88%99%EF%BC%88Interface-Segregation-Principle%EF%BC%8CISP%EF%BC%89"><span class="toc-number">1.5.</span> <span class="toc-text">接口隔离原则（Interface Segregation Principle，ISP）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%80%9C%E8%87%83%E8%82%BF%E2%80%9D%E6%8E%A5%E5%8F%A3%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">1.5.1.</span> <span class="toc-text">“臃肿”接口的问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ISP-%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%9A%E6%8E%A5%E5%8F%A3%E9%9A%94%E7%A6%BB"><span class="toc-number">1.5.2.</span> <span class="toc-text">ISP 解决方案：接口隔离</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2026/06/19/SOLID%E5%8E%9F%E5%88%99%E7%AC%94%E8%AE%B0-%E4%BB%A5DIP%E4%B8%BA%E4%B8%BB%E7%BA%BF/" title="SOLID 原则笔记（以 DIP 为主线）"><img src="/img/solid-dip-cover.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="SOLID 原则笔记（以 DIP 为主线）"/></a><div class="content"><a class="title" href="/2026/06/19/SOLID%E5%8E%9F%E5%88%99%E7%AC%94%E8%AE%B0-%E4%BB%A5DIP%E4%B8%BA%E4%B8%BB%E7%BA%BF/" title="SOLID 原则笔记（以 DIP 为主线）">SOLID 原则笔记（以 DIP 为主线）</a><time datetime="2026-06-19T08:00:00.000Z" title="Created 2026-06-19 16:00:00">2026-06-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/05/30/OpenCode%E6%95%99%E5%AD%A6%E6%96%87%E6%A1%A3/" title="OpenCode 教学文档 — AI 编程助手的完整使用指南"><img src="/img/opencode-wallpaper-2.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="OpenCode 教学文档 — AI 编程助手的完整使用指南"/></a><div class="content"><a class="title" href="/2026/05/30/OpenCode%E6%95%99%E5%AD%A6%E6%96%87%E6%A1%A3/" title="OpenCode 教学文档 — AI 编程助手的完整使用指南">OpenCode 教学文档 — AI 编程助手的完整使用指南</a><time datetime="2026-05-30T15:00:00.000Z" title="Created 2026-05-30 23:00:00">2026-05-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/04/10/1Go%20%E8%AF%AD%E8%A8%80%E5%90%8E%E5%8F%B0%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%EF%BC%9A%E4%BB%8E%E2%80%9C%E4%BA%8B%E6%95%85%E9%A2%91%E5%8F%91%E2%80%9D%E5%88%B0%E2%80%9C%E5%B7%A5%E4%B8%9A%E7%BA%A7%E7%A8%B3%E5%81%A5%E2%80%9D%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%8C%87%E5%8D%97/" title="1Go 语言后台定时任务：从“事故频发”到“工业级稳健”的设计指南"><img src="/images/1go-timer-cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="1Go 语言后台定时任务：从“事故频发”到“工业级稳健”的设计指南"/></a><div class="content"><a class="title" href="/2026/04/10/1Go%20%E8%AF%AD%E8%A8%80%E5%90%8E%E5%8F%B0%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%EF%BC%9A%E4%BB%8E%E2%80%9C%E4%BA%8B%E6%95%85%E9%A2%91%E5%8F%91%E2%80%9D%E5%88%B0%E2%80%9C%E5%B7%A5%E4%B8%9A%E7%BA%A7%E7%A8%B3%E5%81%A5%E2%80%9D%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%8C%87%E5%8D%97/" title="1Go 语言后台定时任务：从“事故频发”到“工业级稳健”的设计指南">1Go 语言后台定时任务：从“事故频发”到“工业级稳健”的设计指南</a><time datetime="2026-04-10T11:43:15.000Z" title="Created 2026-04-10 19:43:15">2026-04-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/04/02/Cloudflare%20Tunnel%20%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97/" title="Cloudflare Tunnel 配置指南"><img src="/img/cloudflare-tunnel-cover.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Cloudflare Tunnel 配置指南"/></a><div class="content"><a class="title" href="/2026/04/02/Cloudflare%20Tunnel%20%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97/" title="Cloudflare Tunnel 配置指南">Cloudflare Tunnel 配置指南</a><time datetime="2026-04-02T14:52:00.000Z" title="Created 2026-04-02 22:52:00">2026-04-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/03/19/Go%E8%AF%AD%E8%A8%80%E5%AE%9E%E4%B9%A0%E9%9D%A2%E8%AF%95%E9%97%AE%E9%A2%98%E5%A4%8D%E7%9B%98/" title="Go语言实习面试问题复盘"><img src="/img/moon-tree-cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Go语言实习面试问题复盘"/></a><div class="content"><a class="title" href="/2026/03/19/Go%E8%AF%AD%E8%A8%80%E5%AE%9E%E4%B9%A0%E9%9D%A2%E8%AF%95%E9%97%AE%E9%A2%98%E5%A4%8D%E7%9B%98/" title="Go语言实习面试问题复盘">Go语言实习面试问题复盘</a><time datetime="2026-03-19T05:21:54.000Z" title="Created 2026-03-19 13:21:54">2026-03-19</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2020 - 2026 By <a class="footer-bar-link" href="/" title="Lay" target="_blank">Lay</a></div></div><div id="footer-type-tips"></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://github.com/anzhiyu-c/hexo-theme-anzhiyu" title="主题">主题</a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">Articles</div><div class="length-num">10</div></a><a href="/tags/" title="tag"><div class="headline">Tags</div><div class="length-num">34</div></a><a href="/categories/" title="category"><div class="headline">Categories</div><div class="length-num">7</div></a></div><span class="sidebar-menu-item-title">Function</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="Display Mode"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>Display Mode</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://blog.anheyu.com/" title="博客"><img class="back-menu-item-icon" src="/img/favicon.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://image.anheyu.com/" title="安知鱼图床"><img class="back-menu-item-icon" src="https://image.anheyu.com/favicon.ico" alt="安知鱼图床"/><span class="back-menu-item-text">安知鱼图床</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/comments/"><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 友链</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size: 0.9em;"></i><span> 友人帐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/fcircle/"><i class="anzhiyufont anzhiyu-icon-artstation faa-tada" style="font-size: 0.9em;"></i><span> 朋友圈</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 我的</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/bangumis/"><i class="anzhiyufont anzhiyu-icon-bilibili faa-tada" style="font-size: 0.9em;"></i><span> 追番页</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/album/"><i class="anzhiyufont anzhiyu-icon-images faa-tada" style="font-size: 0.9em;"></i><span> 相册集</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/air-conditioner/"><i class="anzhiyufont anzhiyu-icon-fan faa-tada" style="font-size: 0.9em;"></i><span> 小空调</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/essay/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size: 0.9em;"></i><span> 闲言碎语</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li></ul></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/AI/" style="font-size: 0.88rem;">AI<sup>1</sup></a><a href="/tags/AI%E7%BC%96%E7%A8%8B/" style="font-size: 0.88rem;">AI编程<sup>1</sup></a><a href="/tags/Arch-Linux/" style="font-size: 0.88rem;">Arch Linux<sup>1</sup></a><a href="/tags/Cloudflare/" style="font-size: 0.88rem;">Cloudflare<sup>1</sup></a><a href="/tags/DIP/" style="font-size: 0.88rem;">DIP<sup>1</sup></a><a href="/tags/Go/" style="font-size: 0.88rem;">Go<sup>1</sup></a><a href="/tags/Go%E8%AF%AD%E8%A8%80/" style="font-size: 0.88rem;">Go语言<sup>2</sup></a><a href="/tags/Linux%E5%AE%89%E8%A3%85/" style="font-size: 0.88rem;">Linux安装<sup>1</sup></a><a href="/tags/OpenCode/" style="font-size: 0.88rem;">OpenCode<sup>1</sup></a><a href="/tags/SOLID/" style="font-size: 0.88rem;">SOLID<sup>1</sup></a><a href="/tags/SSH/" style="font-size: 0.88rem;">SSH<sup>1</sup></a><a href="/tags/Tunnel/" style="font-size: 0.88rem;">Tunnel<sup>1</sup></a><a href="/tags/VMWare/" style="font-size: 0.88rem;">VMWare<sup>1</sup></a><a href="/tags/VMware/" style="font-size: 0.88rem;">VMware<sup>1</sup></a><a href="/tags/VSCode/" style="font-size: 0.88rem;">VSCode<sup>1</sup></a><a href="/tags/cloudflared/" style="font-size: 0.88rem;">cloudflared<sup>1</sup></a><a href="/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" style="font-size: 0.88rem;">内网穿透<sup>1</sup></a><a href="/tags/%E5%90%8E%E5%8F%B0%E5%BC%80%E5%8F%91/" style="font-size: 0.88rem;">后台开发<sup>1</sup></a><a href="/tags/%E5%90%8E%E7%AB%AF/" style="font-size: 0.88rem;">后端<sup>1</sup></a><a href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/" style="font-size: 0.88rem;">大模型<sup>1</sup></a><a href="/tags/%E5%AD%A6%E4%B9%A0%E7%BB%8F%E9%AA%8C/" style="font-size: 0.88rem;">学习经验<sup>1</sup></a><a href="/tags/%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/" style="font-size: 0.88rem;">定时任务<sup>1</sup></a><a href="/tags/%E5%AE%9E%E4%B9%A0/" style="font-size: 0.88rem;">实习<sup>1</sup></a><a href="/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" style="font-size: 0.88rem;">开发工具<sup>1</sup></a><a href="/tags/%E6%8A%80%E6%9C%AF%E6%95%99%E7%A8%8B/" style="font-size: 0.88rem;">技术教程<sup>2</sup></a><a href="/tags/%E6%95%99%E7%A8%8B/" style="font-size: 0.88rem;">教程<sup>1</sup></a><a href="/tags/%E6%9E%B6%E6%9E%84/" style="font-size: 0.88rem;">架构<sup>1</sup></a><a href="/tags/%E7%A8%8B%E5%BA%8F%E5%91%98/" style="font-size: 0.88rem;">程序员<sup>1</sup></a><a href="/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/" style="font-size: 0.88rem;">虚拟机<sup>3</sup></a><a href="/tags/%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/" style="font-size: 0.88rem;">设计原则<sup>1</sup></a><a href="/tags/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/" style="font-size: 0.88rem;">软件安装<sup>1</sup></a><a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E8%AE%BE%E8%AE%A1/" style="font-size: 0.88rem;">面向对象设计<sup>1</sup></a><a href="/tags/%E9%9D%A2%E7%BB%8F/" style="font-size: 0.88rem;">面经<sup>1</sup></a><a href="/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 0.88rem;">面试<sup>1</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="Switch Between Traditional Chinese And Simplified Chinese">繁</button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Setting"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><a id="to_comment" href="#post-comment" title="Scroll To Comments"><i class="anzhiyufont anzhiyu-icon-comments"></i></a><button id="go-up" type="button" title="Back To Top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Search</span><span id="loading-status"></span><button class="search-close-button"><i class="anzhiyufont anzhiyu-icon-xmark"></i></button></nav><div class="is-center" id="loading-database"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-pulse-icon"></i><span>  Loading the Database</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;undefined&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("04/01/2021 00:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `欢迎使用安知鱼!`,
+    `生活明朗, 万物可爱`,
+    `
+        
+       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
+      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
+      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
+      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
+      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
+        
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2020 By 安知鱼 V1.6.14",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by 安知鱼 %c 你正在访问 Lay 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async src="/anzhiyu/random.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>(()=>{
+  const getGiscusTheme = theme => {
+    return theme === 'dark' ? 'dark' : 'light'
+  }
+
+  const loadGiscus = () => {
+    const config = Object.assign({
+      src: 'https://giscus.app/client.js',
+      'data-repo': 'liusonglei796/liusonglei796.github.io',
+      'data-repo-id': 'R_kgDOPW3g8g',
+      'data-category-id': 'DIC_kwDOPW3g8s4CtulJ',
+      'data-theme': getGiscusTheme(document.documentElement.getAttribute('data-theme')),
+      'data-reactions-enabled': '1',
+      crossorigin: 'anonymous',
+      async: true
+    },{"data-lang":"zh-CN","data-mapping":"pathname","data-category":"General","data-input-position":"bottom"})
+
+    const ele = document.createElement('script')
+    for (let key in config) {
+      ele.setAttribute(key, config[key])
+    }
+    document.getElementById('giscus-wrap').appendChild(ele)
+  }
+
+  const changeGiscusTheme = theme => {
+    const sendMessage = message => {
+      const iframe = document.querySelector('iframe.giscus-frame')
+      if (!iframe) return
+      iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app')
+    }
+
+    sendMessage({
+      setConfig: {
+        theme: getGiscusTheme(theme)
+      }
+    });
+  }
+
+  anzhiyu.addGlobalFn('themeChange', changeGiscusTheme, 'giscus')
+
+  if ('Giscus' === 'Giscus' || !false) {
+    if (false) anzhiyu.loadComment(document.getElementById('giscus-wrap'), loadGiscus)
+    else loadGiscus()
+  } else {
+    window.loadOtherComment = loadGiscus
+  }
+})()</script><input type="hidden" name="page-type" id="page-type" value="post"></div><script>var visitorMail = "";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script charset="UTF-8" src="https://cdn.cbd.int/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>
